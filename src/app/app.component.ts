@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   lastZIndex = 10;
 
   ngOnInit(): void {
-    this.openComponent(WelcomeComponent);
+    this.openComponent(WelcomeComponent, 'Welcome');
   }
 
   openMenuItem(item: MenuItem): void {
@@ -34,14 +34,15 @@ export class AppComponent implements OnInit {
       window.open(item.goTo, '_blank');
       return;
     }
-    this.openComponent(item.goTo);
+    this.openComponent(item.goTo, item.name);
     this.startMenuOpened = false;
   }
 
-  openComponent(component: any): void {
+  openComponent(component: any, title: string): void {
     this.openedWindows = [...this.openedWindows, {
       component,
-      zIndex: this.lastZIndex + 1
+      zIndex: this.lastZIndex + 1,
+      title
     }];
     this.lastZIndex += 1;
   }

@@ -6,7 +6,7 @@
         <div class="window-element col-12 d-flex align-items-center justify-content-center" [ngStyle]="{'margin-top': (i * 10)+'px', 'z-index': window.zIndex}" *ngFor="let window of openedWindows; let i = index">
           <div class="card card-tertiary w-100 fmxw-400">
             <div class="card-header text-center">
-              <span>Window</span>
+              <span>{{window.title}}</span>
 
               <button class="btn btn-sm btn-primary btn-close" type="button" (click)="closeWindow(i)">
                 <span class="btn-text">X</span>
