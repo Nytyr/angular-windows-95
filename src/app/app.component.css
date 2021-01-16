@@ -60,6 +60,11 @@
     font-weight: bold;
 }
 
+.navbar .navbar-nav .nav-item {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .cursor-draggable-bar {
     cursor: grab;
     cursor: -moz-grab;

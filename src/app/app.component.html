@@ -43,6 +43,11 @@
           <span class="nav-link-inner-text">📺 Start</span>
         </div>
       </li>
+      <li class="nav-item" *ngFor="let window of openedWindows; let i = index">
+        <div class="nav-link" role="button" (click)="focusWindow(i)" [ngClass]="{pressed: lastWindowOpened == i}">
+          <span class="nav-link-inner-text">{{window.title}}</span>
+        </div>
+      </li>
     </ul>
     <div class="time text-center">
       <span class="text-uppercase">{{ date | date:"HH:mm"}}</span>

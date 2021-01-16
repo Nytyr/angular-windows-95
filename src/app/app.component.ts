@@ -27,6 +27,7 @@ export class AppComponent implements AfterViewInit {
   date = new Date();
   startMenuOpened = false;
   lastZIndex = 10;
+  lastWindowOpened = 0;
   openedWindows = [
     {
       component: WelcomeComponent,
@@ -60,6 +61,7 @@ export class AppComponent implements AfterViewInit {
       title
     }];
     this.lastZIndex += 1;
+    this.lastWindowOpened = this.openedWindows.length - 1;
     this.loadWindowContentWithDelay(this.openedWindows.length - 1, component);
   }
 
@@ -70,6 +72,7 @@ export class AppComponent implements AfterViewInit {
   focusWindow(index: number): void {
     this.openedWindows[index].zIndex = this.lastZIndex + 1;
     this.lastZIndex += 1;
+    this.lastWindowOpened = index;
   }
 
   private loadWindowContentWithDelay(index: number, component: any): void {
