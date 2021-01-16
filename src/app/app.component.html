@@ -21,7 +21,7 @@
     </div>
   </section>
 </main>
-<div *ngIf="startMenuOpened" class="start-menu card card-tertiary w-100 fmxw-300">
+<div *ngIf="startMenuOpened" class="start-menu card card-tertiary w-100 fmxw-300" [ngStyle]="{'z-index': this.lastZIndex + 1}">
   <div class="card-header text-center">
     <span>Start Menu</span>
   </div>
