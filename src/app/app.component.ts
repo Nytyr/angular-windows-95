@@ -22,6 +22,8 @@ export class AppComponent implements OnInit {
 
   date = new Date();
   startMenuOpened = false;
+  openedWindows = [];
+  lastZIndex = 10;
 
   ngOnInit(): void {
     this.openComponent(WelcomeComponent);
@@ -33,10 +35,21 @@ export class AppComponent implements OnInit {
       return;
     }
     this.openComponent(item.goTo);
+    this.startMenuOpened = false;
   }
 
   openComponent(component: any): void {
-    console.log('Lets open a component');
+    this.openedWindows = [...this.openedWindows, {
+      component,
+      zIndex: this.lastZIndex + 1
+    }];
+    this.lastZIndex += 1;
+  }
+
+  closeWindow(index: number): void {
+    console.log(index);
+    this.openedWindows.splice(index, 1);
+    console.log(this.openedWindows);
   }
 
 }

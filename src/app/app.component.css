@@ -43,3 +43,18 @@
 .nav-item.start-menu-item .nav-link:hover {
     color: white;
 }
+
+.window-element {
+    position: absolute;
+}
+
+.btn-close {
+    position: absolute;
+    right: 0;
+    margin-right: 3px;
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    top: 2px;
+    font-weight: bold;
+}

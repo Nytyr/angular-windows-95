@@ -3,6 +3,19 @@
   <section class="main-section min-vh-100 d-flex align-items-center bg-secondary">
     <div class="container">
       <div class="row justify-content-center">
+        <div class="window-element col-12 d-flex align-items-center justify-content-center" [ngStyle]="{'margin-top': (i * 10)+'px', 'z-index': window.zIndex}" *ngFor="let window of openedWindows; let i = index">
+          <div class="card card-tertiary w-100 fmxw-400">
+            <div class="card-header text-center">
+              <span>Window</span>
+
+              <button class="btn btn-sm btn-primary btn-close" type="button" (click)="closeWindow(i)">
+                <span class="btn-text">X</span>
+              </button>
+            </div>
+            <div class="card-body">
+            </div>
+          </div>
+        </div>
         <div class="col-12 d-flex align-items-center justify-content-center">
           <div class="card card-tertiary w-100 fmxw-400">
             <div class="card-header text-center">
