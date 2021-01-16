@@ -3,9 +3,9 @@
   <section class="main-section min-vh-100 d-flex align-items-center bg-secondary">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="window-element col-12 d-flex align-items-center justify-content-center" [ngStyle]="{'margin-top': (i * 10)+'px', 'z-index': window.zIndex}" *ngFor="let window of openedWindows; let i = index">
-          <div class="card card-tertiary w-100 fmxw-400">
-            <div class="card-header text-center">
+        <div class="window-element col-12 d-flex align-items-center justify-content-center" [ngStyle]="{'margin-top': (i * 10)+'px'}" *ngFor="let window of openedWindows; let i = index">
+          <div class="card card-tertiary w-100 fmxw-400" [appDraggable]="true" [ngStyle]="{'z-index': window.zIndex}">
+            <div class="card-header text-center cursor-draggable-bar">
               <span>{{window.title}}</span>
 
               <button class="btn btn-sm btn-primary btn-close" type="button" (click)="closeWindow(i)">

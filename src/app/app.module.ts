@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { DraggableDirective } from './draggable.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    DraggableDirective
   ],
   imports: [
     BrowserModule

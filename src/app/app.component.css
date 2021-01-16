@@ -59,3 +59,14 @@
     top: 2px;
     font-weight: bold;
 }
+
+.cursor-draggable-bar {
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+.cursor-draggable-bar:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
