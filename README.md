@@ -4,6 +4,30 @@ Angular base to make simple web-apps with Windows 95 style.
 
 Done using the [Windows 95 UI Kit](https://github.com/themesberg/windows-95-ui-kit)
 
+## Screenshot
+<img src="https://raw.githubusercontent.com/nytyr/angular-windows-95/master/demo.png" alt="W95">
+
+## Add components to the start menu
+
+Just generate your components and modify 'menu' field from the AppComponent.
+
+```typescript
+menu: MenuItem[] = [
+    {
+      name: '📕 Welcome',
+      goTo: WelcomeComponent,
+    },
+    {
+      name: '📄 Register',
+      goTo: RegisterComponent,
+    },
+    {
+      name: '🔗 Github',
+      goTo: 'https://github.com/nytyr',
+    }
+  ];
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
