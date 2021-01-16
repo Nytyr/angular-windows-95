@@ -14,7 +14,6 @@ export class DraggableDirective implements OnInit {
     constructor(public element: ElementRef) {}
 
     ngOnInit(): void{
-        console.log('Element');
         // css changes
         if (this.appAllowDrag){
             this.element.nativeElement.style.position = 'relative';
