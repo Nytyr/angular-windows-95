@@ -46,6 +46,7 @@
 
 .window-element {
     position: absolute;
+    top: 80px;
 }
 
 .btn-close {

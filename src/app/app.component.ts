@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ComponentFactoryResolver, QueryList, ViewChildren, ViewContainerRef } from '@angular/core';
 import { MenuItem } from './menu.item';
 import { RegisterComponent } from './register/register.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -8,8 +8,12 @@ import { WelcomeComponent } from './welcome/welcome.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements AfterViewInit {
   menu: MenuItem[] = [
+    {
+      name: '📕 Welcome',
+      goTo: WelcomeComponent,
+    },
     {
       name: '📄 Register',
       goTo: RegisterComponent,
@@ -22,11 +26,24 @@ export class AppComponent implements OnInit {
 
   date = new Date();
   startMenuOpened = false;
-  openedWindows = [];
   lastZIndex = 10;
+  openedWindows = [
+    {
+      component: WelcomeComponent,
+      zIndex: this.lastZIndex,
+      title: 'Welcome'
+    }
+  ];
 
-  ngOnInit(): void {
-    this.openComponent(WelcomeComponent, 'Welcome');
+  @ViewChildren('dynamic', {read: ViewContainerRef})
+  public windowTargets: QueryList<ViewContainerRef>;
+
+  constructor(private readonly componentFactoryResolver: ComponentFactoryResolver) {}
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.loadWindowContent(0, this.openedWindows[0].component);
+    }, 20);
   }
 
   openMenuItem(item: MenuItem): void {
@@ -39,18 +56,26 @@ export class AppComponent implements OnInit {
   }
 
   openComponent(component: any, title: string): void {
+    // ToDo Check if is already opened
     this.openedWindows = [...this.openedWindows, {
       component,
       zIndex: this.lastZIndex + 1,
       title
     }];
     this.lastZIndex += 1;
+    setTimeout(() => {
+      this.loadWindowContent(this.openedWindows.length - 1, component);
+    }, 20);
   }
 
   closeWindow(index: number): void {
-    console.log(index);
     this.openedWindows.splice(index, 1);
-    console.log(this.openedWindows);
   }
 
+  private loadWindowContent(index: number, component: any): void {
+    const target = this.windowTargets.toArray()[index];
+    const widgetComponent = this.componentFactoryResolver.resolveComponentFactory(component);
+    const ref = target.createComponent(widgetComponent);
+    ref.changeDetectorRef.detectChanges();
+  }
 }
