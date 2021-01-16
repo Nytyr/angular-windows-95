@@ -41,9 +41,7 @@ export class AppComponent implements AfterViewInit {
   constructor(private readonly componentFactoryResolver: ComponentFactoryResolver) {}
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.loadWindowContent(0, this.openedWindows[0].component);
-    }, 20);
+    this.loadWindowContentWithDelay(0, this.openedWindows[0].component);
   }
 
   openMenuItem(item: MenuItem): void {
@@ -56,20 +54,23 @@ export class AppComponent implements AfterViewInit {
   }
 
   openComponent(component: any, title: string): void {
-    // ToDo Check if is already opened
     this.openedWindows = [...this.openedWindows, {
       component,
       zIndex: this.lastZIndex + 1,
       title
     }];
     this.lastZIndex += 1;
-    setTimeout(() => {
-      this.loadWindowContent(this.openedWindows.length - 1, component);
-    }, 20);
+    this.loadWindowContentWithDelay(this.openedWindows.length - 1, component);
   }
 
   closeWindow(index: number): void {
     this.openedWindows.splice(index, 1);
+  }
+
+  private loadWindowContentWithDelay(index: number, component: any): void {
+    setTimeout(() => {
+      this.loadWindowContent(index, component);
+    }, 20);
   }
 
   private loadWindowContent(index: number, component: any): void {
