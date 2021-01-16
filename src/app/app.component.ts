@@ -32,7 +32,7 @@ export class AppComponent implements AfterViewInit {
     {
       component: WelcomeComponent,
       zIndex: this.lastZIndex,
-      title: 'Welcome'
+      title: '📕 Welcome'
     }
   ];
 
