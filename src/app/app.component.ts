@@ -67,6 +67,11 @@ export class AppComponent implements AfterViewInit {
     this.openedWindows.splice(index, 1);
   }
 
+  focusWindow(index: number): void {
+    this.openedWindows[index].zIndex = this.lastZIndex + 1;
+    this.lastZIndex += 1;
+  }
+
   private loadWindowContentWithDelay(index: number, component: any): void {
     setTimeout(() => {
       this.loadWindowContent(index, component);
