@@ -4,8 +4,12 @@ Angular base to make simple web-apps with Windows 95 style.
 
 Done using the [Windows 95 UI Kit](https://github.com/themesberg/windows-95-ui-kit)
 
-## Screenshot
+## Screenshots
 <img src="https://raw.githubusercontent.com/nytyr/angular-windows-95/master/demo.png" alt="W95">
+
+
+<img src="https://raw.githubusercontent.com/nytyr/angular-windows-95/master/demo.gif" alt="W95 Gif">
+
 
 ## Add components to the start menu
 
