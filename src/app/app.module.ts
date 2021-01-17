@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { DraggableDirective } from './draggable.directive';
+import { WindowsService } from './windows.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import { DraggableDirective } from './draggable.directive';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    WindowsService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

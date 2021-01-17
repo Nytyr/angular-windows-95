@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ComponentFactoryResolver, QueryList, ViewChil
 import { MenuItem } from './menu.item';
 import { RegisterComponent } from './register/register.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { WindowsService } from './windows.service';
 
 @Component({
   selector: 'app-root',
@@ -39,10 +40,17 @@ export class AppComponent implements AfterViewInit {
   @ViewChildren('dynamic', {read: ViewContainerRef})
   public windowTargets: QueryList<ViewContainerRef>;
 
-  constructor(private readonly componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(
+    private readonly componentFactoryResolver: ComponentFactoryResolver,
+    private readonly windowsService: WindowsService,
+  ) {}
 
   ngAfterViewInit(): void {
     this.loadWindowContentWithDelay(0, this.openedWindows[0].component);
+    this.windowsService.openedEvent
+      .subscribe((data: MenuItem) => {
+        this.openMenuItem(data);
+      });
   }
 
   openMenuItem(item: MenuItem): void {

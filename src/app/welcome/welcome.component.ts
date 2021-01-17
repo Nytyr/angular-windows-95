@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RegisterComponent } from '../register/register.component';
+import { WindowsService } from '../windows.service';
 
 @Component({
   selector: 'app-welcome',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private readonly windowsService: WindowsService,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  openRegister(): void {
+    this.windowsService.openMenuItem({
+      name: '📄 Register',
+      goTo: RegisterComponent,
+    });
   }
 
 }
